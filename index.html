@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+  </head>
+  <body>
+<form onsubmit="return false">
+    <label for="a">이름을 입력하시오</label><br>
+    <input type="integer" id="a" name="name" value=""><br>
+    <input py-click="sub()" type="submit" id="btn-form" value="제출">
+
+
+</form> 
+
+<p>결과:</p>
+<p id = '결과'></p>
+<py-script>
+
+    def sub(*args,**kwargs):
+        a = Element('a').value
+        result_place = Element('결과')
+        result_place.write( a )
+</py-script>
+</body>
+</html>
