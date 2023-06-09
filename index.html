@@ -6,9 +6,12 @@
   </head>
   <body>
 <form onsubmit="return false">
-    <label for="a">이름을 입력하시오</label><br>
+    <label for="a">엄마 키를 입력하시오</label><br>
+    <input type="integer" id="b" name="name" value=""><br>
+    <label for="a">아빠 키를 입력하시오</label><br>
     <input type="integer" id="a" name="name" value=""><br>
     <input py-click="sub()" type="submit" id="btn-form" value="제출">
+    
 
 
 </form> 
@@ -16,11 +19,15 @@
 <p>결과:</p>
 <p id = '결과'></p>
 <py-script>
-
+    import random
     def sub(*args,**kwargs):
-        a = Element('a').value
+        a = Element('b').value
+        b = Element('a').value
+        a = int(a)
+        b = int(b)
+        c = random.randrange(a,b)
         result_place = Element('결과')
-        result_place.write( a )
+        result_place.write(c)
 </py-script>
 </body>
 </html>
