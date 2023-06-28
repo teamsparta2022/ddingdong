@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>랜덤으로 술래 정하기</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 30px;
+            margin: 10px;
         }
         
         h1 {
@@ -20,10 +21,11 @@
         input[type="number"] {
             width: 100px;
             margin-left: 5px;
+            margin-right: 5px;
         }
         
         .container {
-            max-width: 600px;
+            max-width: 100%;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
@@ -33,6 +35,7 @@
         .form-group {
             margin-bottom: 20px;
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
         }
         
@@ -43,7 +46,7 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            margin-left: 10px;
+            margin-top: 1px;
         }
         
         .btn:hover {
@@ -133,14 +136,14 @@
         <h1>랜덤으로 술래 정하기</h1>
         
         <div class="form-group">
-            <label for="countInput">몇 명이 참여하는지 숫자를 입력해 주세요  </label>
+            <label for="countInput">몇 명이 참여하는지 숫자를 입력해 주세요:</label>
             <input type="number" id="countInput" name="countInput">
             <button class="btn" onclick="enterNumberOfPeople()">입력</button>
         </div>
         
-        <div id="namesInput">참여자의 이름을 입력해 주세요</div><br>
+        <div id="namesInput">참여자의 이름을 입력해 주세요:</div><br>
     
-        <button onclick="startCountdown()">술래 정하기</button>
+        <button class="btn" onclick="startCountdown()">술래 정하기</button>
         <p id="countdownText"></p>
     
         <p id="selectedPersonText"></p>
