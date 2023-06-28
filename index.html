@@ -57,6 +57,7 @@
     </style>
     <script>
         var names = [];
+        var countdownInterval;
 
         function enterNumberOfPeople() {
             var countInput = document.getElementById("countInput");
@@ -86,6 +87,22 @@
                 namesInput.appendChild(input);
                 namesInput.appendChild(br);
             }
+        }
+        
+        function startCountdown() {
+            var countdown = 5; // Set the countdown duration in seconds
+            
+            countdownInterval = setInterval(function() {
+                var countdownText = document.getElementById("countdownText");
+                countdownText.textContent = countdown;
+                
+                if (countdown === 0) {
+                    clearInterval(countdownInterval);
+                    selectRandomPerson();
+                }
+                
+                countdown--;
+            }, 1000);
         }
         
         function selectRandomPerson() {
@@ -123,7 +140,8 @@
         
         <div id="namesInput">참여자의 이름을 입력해 주세요</div><br>
     
-        <button onclick="selectRandomPerson()">술래 정하기</button>
+        <button onclick="startCountdown()">술래 정하기</button>
+        <p id="countdownText"></p>
     
         <p id="selectedPersonText"></p>
     </div>
