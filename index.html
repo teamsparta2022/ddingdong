@@ -63,6 +63,14 @@
             background-color: #ccc;
             cursor: not-allowed;
         }
+
+        img {
+            margin: 0 auto;
+            display: block;
+            width: 155px;
+            height: 65px;
+            margin-top: 60px;
+        }
     </style>
 </head>
 
@@ -74,7 +82,11 @@
         <div class="input-group">
             <input type="number" id="guess-input" placeholder="숫자를 입력하시오">
             <button id="guess-button">입력</button>
+
         </div>
+        <a href="https://ddingdong.spartacodingclub.kr/">
+            <img src="img.png" onClick="https://ddingdong.spartacodingclub.kr/">
+        </a>
     </div>
 
     <script>
@@ -106,6 +118,7 @@
         }
 
         document.getElementById("guess-button").addEventListener("click", guess);
+
     </script>
 </body>
 
