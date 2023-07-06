@@ -78,7 +78,7 @@
     <div class="container">
         <h1>숫자 게스 게임</h1>
         <p class="message" id="message">숫자 게스 게임을 시작 해보자!</p>
-        <p class="instruction" id="instruction">1~ 100 의 숫자 중에 한 가지를 생각 하고 있어 맞춰봐!</p>
+        <p class="instruction" id="instruction">나는 1~ 100 의 숫자 중에 한 가지를 생각 하고 있어 맞춰봐!</p>
         <div class="input-group">
             <input type="number" id="guess-input" placeholder="숫자를 입력하시오">
             <button id="guess-button">입력</button>
@@ -100,18 +100,18 @@
             var instructionElement = document.getElementById("instruction");
 
             if (isNaN(guess)) {
-                messageElement.textContent = "Invalid input. Please enter a valid number.";
+                messageElement.textContent = "숫자를 입력해 주세요.";
                 return;
             }
 
             tries++;
 
             if (guess < secretNumber) {
-                messageElement.textContent = "Too low! Try guessing higher.";
+                messageElement.textContent = "예측한 숫자보다 높은 숫자 입니다 :)";
             } else if (guess > secretNumber) {
-                messageElement.textContent = "Too high! Try guessing lower.";
+                messageElement.textContent = "예측한 숫자보다 낮은 숫자 입니다 :)";
             } else {
-                messageElement.textContent = "Congratulations! You guessed the number correctly in " + tries + " tries.";
+                messageElement.textContent = "맞췄습니다! 당신은  " + tries + " 번의 시도 끝에 맞췄어요!";
                 guessInput.disabled = true;
                 document.getElementById("guess-button").disabled = true;
             }
