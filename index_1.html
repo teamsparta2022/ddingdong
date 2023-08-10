@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>랜덤으로 정하기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        input[type="number"] {
+            width: 100px;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 10px 10px;
+            background-color:#FF773C;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 1px;
+        }
+        
+        .btn:hover {
+            background-color: #FF773C;
+        }
+        
+        #selectedPersonText {
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+    <script>
+        var names = [];
+        var countdownInterval;
+
+        function enterNumberOfPeople() {
+            var countInput = document.getElementById("countInput");
+            var count = parseInt(countInput.value);
+            
+            if (count < 1) {
+                console.log("Invalid number of people. Please enter a positive integer.");
+                return;
+            }
+            
+            var namesInput = document.getElementById("namesInput");
+            namesInput.innerHTML = ""; // Clear any previous names
+            
+            for (var i = 0; i < count; i++) {
+                var label = document.createElement("label");
+                label.setAttribute("for", "name" + i);
+                label.innerHTML =  (i+1)+"번째" + ":";
+                
+                var input = document.createElement("input");
+                input.setAttribute("type", "text");
+                input.setAttribute("id", "name" + i);
+                input.setAttribute("name", "name" + i);
+                
+                var br = document.createElement("br");
+                
+                namesInput.appendChild(label);
+                namesInput.appendChild(input);
+                namesInput.appendChild(br);
+            }
+        }
+        
+        function startCountdown() {
+            var countdown = 5; // Set the countdown duration in seconds
+            
+            countdownInterval = setInterval(function() {
+                var countdownText = document.getElementById("countdownText");
+                countdownText.textContent = countdown;
+                
+                if (countdown === 0) {
+                    clearInterval(countdownInterval);
+                    selectRandomPerson();
+                }
+                
+                countdown--;
+            }, 1000);
+        }
+        
+        function selectRandomPerson() {
+            var countInput = document.getElementById("countInput");
+            var count = parseInt(countInput.value);
+            names = [];
+            
+            for (var i = 0; i < count; i++) {
+                var nameInput = document.getElementById("name" + i);
+                names.push(nameInput.value);
+            }
+            
+            if (names.length < 2) {
+                console.log("Please enter at least two names.");
+                return;
+            }
+            
+            var selectedPerson = names[Math.floor(Math.random() * names.length)];
+            console.log("The selected person is: " + selectedPerson);
+            
+            var selectedPersonText = document.getElementById("selectedPersonText");
+            selectedPersonText.textContent = "당첨: " + selectedPerson;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>랜덤으로 정하기</h1>
+        
+        <div class="form-group">
+            <label for="countInput">참여 하는 인원 및 정해야 하는 것의 수를 입력 해 주세요. :</label>
+            <input type="number" id="countInput" name="countInput">
+            <button class="btn" onclick="enterNumberOfPeople()">입력</button>
+        </div>
+        
+        <div id="namesInput">참여자의 이름 혹은 정해야 하는 것을 입력 해주세요!:</div><br>
+    
+        <button class="btn" onclick="startCountdown()">정하기</button>
+        <p id="countdownText"></p>
+    
+        <p id="selectedPersonText"></p>
+    </div>
+</body>
+</html>
